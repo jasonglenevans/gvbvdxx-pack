@@ -6,4 +6,4 @@ git branch -M main
 git rm -r --cached node_modules
 git commit -m "Removed node_modules"
 git remote add origin https://github.com/jasonglenevans/gvbvdxx-pack.git
-git push -u origin main
+git push -f origin main
