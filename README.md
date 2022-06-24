@@ -6,23 +6,25 @@ Hide Variables, And Make Node JS Programs Do The Build And Devlopement Server Fo
 Get Started:
 
 ```
-
+mkdir my-gvbvdxx-pack-project
+cd my-gvbvdxx-pack-project
 npm init
-
-
 npm install https://github.com/jasonglenevans/gvbvdxx-pack
-
-
-
+mkdir src/
+cd src/
+echo "//put some code here" >> index.js
+cd ../
+mkdir static/
 ```
 
 # usage
 
+To do things, like build and devlopment server, use node js programs,
+like this:
+
 To open a devlopment server:
 
 ```
-
-
 var gvbvdxxPack = require("gvbvdxx-pack");
 var fs = require("fs");
 var path = require("path");
@@ -57,15 +59,11 @@ var files = gvbvdxxPack.compile(filepathlist,false);
  * @number
  **/
 gvbvdxxPack.devServer(files, null, 4524);
-
-
 ```
 
 To build your code:
 
 ```
-
-
 var gvbvdxxPack = require("gvbvdxx-pack");
 var fs = require("fs");
 var path = require("path");
@@ -96,6 +94,4 @@ var files = gvbvdxxPack.compile(filepathlist,false);
  * @array
  **/
 gvbvdxxPack.build(files);
-
-
 ```
