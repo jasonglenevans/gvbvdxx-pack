@@ -1,4 +1,4 @@
 var log = require("log");
 log.log("Hello World!");
-
-e
+//for error test.
+will cause an error
