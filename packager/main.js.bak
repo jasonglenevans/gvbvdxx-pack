@@ -79,6 +79,7 @@
         __gvbvdxx_pack_log.log("Gvbvdxx Pack", "Loaded Files");
         require("src/index.js");
     }).catch(() => {
-		document.write("Failed To Read The Compiled Data, Please Check If Your Using From A HTTP Or HTTPS Protocol, Or Use A Electron App")
+		document.write("Failed To Read The Compiled Data, Please Check If Your Using From A HTTP Or HTTPS Protocol, Or Use A Electron App.")
+		__gvbvdxx_pack_log.error("Gvbvdxx Pack", "Failed To Read The Compiled Data, Please Check If Your Using From A HTTP Or HTTPS Protocol, Or Use A Electron App.");
 	});
 })();

@@ -14,18 +14,32 @@
                 }
             };
         }
-        if (a == "HTMLEmmitter") {
+        if (a == "html") {
             return class HTMLEmmitter {
-                constructor() {}
-                writeHTML(contents, object) {
-                    var subject = null;
-                    if (object) {
-                        subject = object;
-                    } else {
-                        subject = document.body;
-                    }
-                    subject.innerHTML += contents;
-                }
+                constructor() {
+					/*support for writing html*/
+					this.writeHTML = (contents, object) => {
+						var subject = null;
+						if (object) {
+							subject = object;
+						} else {
+							subject = document.body;
+						}
+						subject.innerHTML += contents;
+						return subject;
+					};
+					/*support for setting html*/
+					this.setHTML = (contents, object) => {
+						var subject = null;
+						if (object) {
+							subject = object;
+						} else {
+							subject = document.body;
+						}
+						subject.innerHTML = contents;
+						return subject;
+					};
+				}
 
             };
         }
