@@ -1,5 +1,16 @@
 (function () {
     var dirname = "";
+    var __gvbvdxx_pack_log = {
+        log: function (a, b) {
+            console.log("%c[" + a + "]:" + b, "color:black;font-weight:bold;");
+        },
+        warn: function (a, b) {
+            console.warn("%c[" + a + "]:" + b, "color:#ffa94d;font-weight:bold;background:#d9480f;");
+        },
+        error: function (a, b) {
+            console.error("%c[" + a + "]:" + b, "color:#ff8787;font-weight:bold;background:#c92a2a;");
+        }
+    };
     var require = (a) => {
         if (a == "log") {
             return {
@@ -57,7 +68,13 @@
         }
         for (var i in var__gvbvdxx_pack_filedata) {
             if (var__gvbvdxx_pack_filedata[i].realdirNoReplacer.replaceAll("\\", "/") == a) {
-                return eval(var__gvbvdxx_pack_filedata[i].data);
+				try{
+					return eval(var__gvbvdxx_pack_filedata[i].data);
+				} catch(e) {
+					__gvbvdxx_pack_log.error("Gvbvdxx Pack", "Failed To Extucute "+var__gvbvdxx_pack_filedata[i].realdirNoReplacer+". "+e);
+					throw Error(e);
+					return;
+				}
             }
         }
         throw Error("Unable To Find Module " + a)
@@ -70,17 +87,6 @@
         return dirsgen;
     };
     var var__gvbvdxx_pack_filedata = {};
-    var __gvbvdxx_pack_log = {
-        log: function (a, b) {
-            console.log("%c[" + a + "]:" + b, "color:black;font-weight:bold;");
-        },
-        warn: function (a, b) {
-            console.warn("%c[" + a + "]:" + b, "color:#ffa94d;font-weight:bold;background:#d9480f;");
-        },
-        error: function (a, b) {
-            console.error("%c[" + a + "]:" + b, "color:#ff8787;font-weight:bold;background:#c92a2a;");
-        }
-    };
     async function fetchFiles() {
 		var response = await fetch("./gvbvdxxpack_files.json?n=1").catch(function () {
 			throw Error("Fetch Fail")
@@ -91,7 +97,9 @@
     fetchFiles().then(function (a) {
         var__gvbvdxx_pack_filedata = JSON.parse(a).fileTemplate;
         __gvbvdxx_pack_log.log("Gvbvdxx Pack", "Loaded Files");
-        require("src/index.js");
+		try{
+			require("src/index.js");
+		}catch(e){}
     }).catch(() => {
 		document.write("Failed To Read The Compiled Data, Please Check If Your Using From A HTTP Or HTTPS Protocol, Or Use A Electron App.")
 		__gvbvdxx_pack_log.error("Gvbvdxx Pack", "Failed To Read The Compiled Data, Please Check If Your Using From A HTTP Or HTTPS Protocol, Or Use A Electron App.");
