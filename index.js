@@ -174,7 +174,12 @@ var expo = {
 			if (fileTemplate[fileurl]) {
 				res.end(fileTemplate[fileurl].data);
 				return;
-			}	
+			}
+			if (req.method == "GET") {
+				res.writeHead(404,{});
+			} else {
+				res.writeHead(403,{});
+			}
 			res.end("CANNOT "+req.method+" "+req.url);
 			return;
 		});

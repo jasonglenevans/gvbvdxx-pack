@@ -26,5 +26,7 @@ var files = gvbvdxxPack.compile(filepathlist,false);
 /**
  * Compiled Files
  * @array
+ * HTML Template
+ * @string OR @null
  **/
-gvbvdxxPack.build(files);
+gvbvdxxPack.build(files, null);

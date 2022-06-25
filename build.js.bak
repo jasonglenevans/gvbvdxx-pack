@@ -10,7 +10,7 @@ function ThroughDirectory(directory) {
         if (fs.statSync(absolute).isDirectory()) {
             return ThroughDirectory(absolute);
         } else {
-            return filepathlist.push(absolute);
+            return filepathlist.push(path.normalize(absolute));
 		}
     });
 }

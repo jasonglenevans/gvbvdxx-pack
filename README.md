@@ -17,7 +17,7 @@ cd ../
 mkdir static/
 ```
 
-# usage
+# Usage
 
 To do things, like build and devlopment server, use node js programs,
 like this:
@@ -92,6 +92,55 @@ var files = gvbvdxxPack.compile(filepathlist,false);
 /**
  * Compiled Files
  * @array
+ * HTML Template
+ * @string OR @null
  **/
-gvbvdxxPack.build(files);
+gvbvdxxPack.build(files, null);
 ```
+
+For API Used A Good Example Is:
+
+```
+var log = require("log");
+log.log("Hello, world!")
+```
+
+and for requiring you must do:
+
+```
+cost someModule = require("src/module/index.js");
+```
+
+also, there is no support for webpack modules, you must make your own, and you cannot use the import,
+your forced to use require, because im to lazy to add the import.
+
+there are two ways of exporting modules:
+
+First way:
+
+```
+module.exports = "something goes here";
+```
+
+Second Way:
+
+```
+return "something goes here";
+```
+
+and YES, they both work, for now.
+
+# Notes
+
+When requiring modules, you may see that you need to first put the src in front of it like this:
+```
+require("src/moduleName.js")
+```
+
+and if your script is in a directory, for example, "src/scripts/index.js" the you need to do:
+
+```
+require("src/scripts/someOtherScript.js")
+```
+
+same thing for modules, and other stuff.

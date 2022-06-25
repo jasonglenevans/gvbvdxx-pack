@@ -161,7 +161,7 @@ var expo = {
 				}));
 				return;
 			}
-			var fsURL = path.join("static",decodeURIComponent(req.url).split("?")[0].split("#")[0]);
+			var fsURL = path.join("./",decodeURIComponent(req.url).split("?")[0].split("#")[0]);
 			var fsData = null;
 			try{
 				fsData = fs.readFileSync(fsURL);
@@ -174,7 +174,8 @@ var expo = {
 			if (fileTemplate[fileurl]) {
 				res.end(fileTemplate[fileurl].data);
 				return;
-			}	
+			}
+			res.writeHead(403,{});
 			res.end("CANNOT "+req.method+" "+req.url);
 			return;
 		});
