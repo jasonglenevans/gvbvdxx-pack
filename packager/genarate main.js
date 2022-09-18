@@ -45,3 +45,4 @@ fs.writeFileSync("packager/mainarray.js",
 ].join("\n")+"\n"+contents.join(""), {
     encoding: "UTF-8"
 });
+console.log("main gen complete.")

@@ -94,14 +94,10 @@
         var text = await response.text();
         return text;
     };
-    fetchFiles().then(function (a) {
-        var__gvbvdxx_pack_filedata = JSON.parse(a).fileTemplate;
-        __gvbvdxx_pack_log.log("Gvbvdxx Pack", "Loaded Files");
-		try{
-			require("src/index.js");
-		}catch(e){}
-    }).catch(() => {
-		document.write("Failed To Read The Compiled Data, Please Check If Your Using From A HTTP Or HTTPS Protocol, Or Use A Electron App.")
-		__gvbvdxx_pack_log.error("Gvbvdxx Pack", "Failed To Read The Compiled Data, Please Check If Your Using From A HTTP Or HTTPS Protocol, Or Use A Electron App.");
-	});
+    var__gvbvdxx_pack_filedata = GPDATA.fileTemplate;
+    __gvbvdxx_pack_log.log("Gvbvdxx Pack", "Loaded Files");
+	try{
+		require("src/index.js");
+	}catch(e){}
+	delete GPDATA;
 })();
