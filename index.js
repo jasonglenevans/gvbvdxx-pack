@@ -102,7 +102,7 @@ var expo = {
 			}),{encoding:"UTF-8"});
 			console.log(chalk.bgBlue(chalk.white(`Building: ${"main.js"}`)));
 			try{
-				fs.writeFileSync("./dist/main.js",`var GPDATA = ${JSON.stringify({fileTemplate:fileTemplate,files:compiled})};`+require("./packager/").main.join("\n"),{encoding:"UTF-8"});
+				fs.writeFileSync("./dist/main.js",`var GPDATA = ${JSON.stringify({fileTemplate:fileTemplate,files:compiled},null," ")};`+require("./packager/").main.join("\n"),{encoding:"UTF-8"});
 			}catch(e){}
 			for (var i in compiled) {
 				console.log(chalk.bgBlue(chalk.white(`Building: ${compiled[i].name}`)));
@@ -151,7 +151,7 @@ var expo = {
 				return;
 			}
 			if (req.url == "/main.js?n=1" || req.url == "/main.js/?n=1") {
-				res.end(`var GPDATA = ${JSON.stringify({fileTemplate:fileTemplate,files:compiled})};`+require("./packager/").main.join("\n"));
+				res.end(`var GPDATA = ${JSON.stringify({fileTemplate:fileTemplate,files:compiled},null," ")};`+require("./packager/").main.join("\n"));
 				return;
 			}	
 			if (req.url == "/gvbvdxxpack_files.json?n=1" || req.url == "/gvbvdxxpack_files.json/?n=1") {
