@@ -144,6 +144,9 @@ module.exports = async function (a,b) {
 				]);
 				var packageJSON = JSON.parse(fs.readFileSync("package.json",{encoding:"UTF-8"}));
 				try{
+					fs.mkdirSync("./app-electron/resources/");
+				}catch(e){}
+				try{
 					fs.mkdirSync("./app-electron/resources/app/");
 				}catch(e){}
 				fs.writeFileSync("./app-electron/resources/app/package.json",JSON.stringify({name:packageJSON.name,main:"main.js"}));
